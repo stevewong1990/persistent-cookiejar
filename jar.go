@@ -184,6 +184,9 @@ func (j *Jar) Cookies(u *url.URL) (cookies []*http.Cookie) {
 
 // cookies is like Cookies but takes the current time as a parameter.
 func (j *Jar) cookies(u *url.URL, now time.Time) (cookies []*http.Cookie) {
+	if u == nil {
+		return cookies
+	}
 	if u.Scheme != "http" && u.Scheme != "https" {
 		return cookies
 	}
